@@ -33,5 +33,10 @@
 		{
 			$this->ThaoTacCSDL->UpdateNhietDo($NhietDo);
 		}
+		public function DangNhap($TenDangNhap,$MatKhau)
+		{
+			$kq=$this->ThaoTacCSDL->DangNhap($TenDangNhap,$MatKhau);
+			return mysql_num_rows($kq)==1;
+		}
 	}
 ?>

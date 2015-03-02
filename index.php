@@ -47,6 +47,19 @@
 			$KetQua=json_encode(array('list'=>$ListTrangThai));
 			echo $KetQua;
 			break;
+		case "dangnhap":
+			$TenDangNhap;
+			$MatKhau;
+			if(isset($_GET["tendangnhap"]))	
+			{
+				$TenDangNhap=$_GET["tendangnhap"];
+			}
+			if(isset($_GET["matkhau"]))
+			{
+				$MatKhau=$_GET["matkhau"];
+			}
+			echo json_encode(array("success"=>$XuLyNV->DangNhap($TenDangNhap,$MatKhau)));
+			break;
 		}
 	}
 	else

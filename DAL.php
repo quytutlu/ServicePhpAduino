@@ -10,7 +10,7 @@
 		public function BatBongDen()
 		{
 			$sql="Call BatBongDen()";
-			return mysql_query($sql);	
+			return mysql_query($sql);
 		}
 		public function TatBongDen()
 		{
@@ -25,7 +25,13 @@
 		public function UpdateNhietDo($NhietDo)
 		{
 			$sql="Call UpdateNhietDo(".$NhietDo.")";
+			echo $sql;
 			mysql_query($sql);
+		}
+		public function DangNhap($TenDangNhap,$MatKhau)
+		{
+			$sql=@"Call DangNhap(\"".$TenDangNhap."\",\"".$MatKhau."\")";
+			return mysql_query($sql);
 		}
 	}
 ?>
