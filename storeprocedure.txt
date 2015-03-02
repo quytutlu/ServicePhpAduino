@@ -1,0 +1,20 @@
+create procedure BatBongDen()
+begin
+	update ThietBi set TrangThai='1' where TenThietBi='BongDen';
+end
+
+create procedure LayTrangThai()
+begin
+	select *
+    from ThietBi;
+end
+
+create procedure TatBongDen()
+begin
+	update ThietBi set TrangThai='0' where TenThietBi='BongDen';
+end
+
+create procedure UpdateNhietDo(IN NhietDo varchar(10))
+begin
+	update ThietBi set TrangThai=NhietDo where TenThietBi='NhietDo';
+end
