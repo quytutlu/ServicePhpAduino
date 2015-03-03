@@ -16,6 +16,14 @@
 		{
 			return $this->ThaoTacCSDL->TatBongDen();
 		}
+		public function BatDieuHoa()
+		{
+			return $this->ThaoTacCSDL->BatDieuHoa();
+		}
+		public function TatDieuHoa()
+		{
+			return $this->ThaoTacCSDL->TatDieuHoa();
+		}
 		public function LayTrangThai()
 		{
 			$kq=$this->ThaoTacCSDL->LayTrangThai();
@@ -29,10 +37,41 @@
 			}
 			return $ListTrangThai;
 		}
+		private function GuiEmail()
+		{
+			//echo "Da gui email";
+		}
 		public function UpdateNhietDo($NhietDo)
 		{
 			$this->ThaoTacCSDL->UpdateNhietDo($NhietDo);
+			if($NhietDo>40)
+			{
+				$kq=$this->ThaoTacCSDL->KiemTraCoNguoi();
+				$row=mysql_fetch_array($kq);
+				if($row[1]==0)
+				{
+					//echo "Da gui mail";
+					$this->GuiEmail();
+				}
+				else
+				{
+					echo "bao dong chay";
+				}
+			}
+			if($NhietDo>35&&$NhietDo<40)
+			{
+				$kq=$this->ThaoTacCSDL->KiemTraCoNguoi();
+				$row=mysql_fetch_array($kq);
+				if($row[1]==1)
+				{
+					$this->BatDieuHoa();
+				}
+			}
 		}
+		public function UpdateStt($MaStt)
+		{
+			return $this->ThaoTacCSDL->UpdateStt($MaStt);
+		} 
 		public function DangNhap($TenDangNhap,$MatKhau)
 		{
 			$kq=$this->ThaoTacCSDL->DangNhap($TenDangNhap,$MatKhau);

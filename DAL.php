@@ -7,6 +7,10 @@
 			$conn=mysql_connect("localhost","root");
 			mysql_select_db("Arduino",$conn);
 		}
+		public function CloseBD()
+		{
+			mysql_close();
+		}
 		public function BatBongDen()
 		{
 			$sql="Call BatBongDen()";
@@ -17,6 +21,16 @@
 			$sql="Call TatBongDen()";
 			return mysql_query($sql);
 		}
+		public function BatDieuHoa()
+		{
+			$sql="Call BatDieuHoa()";
+			return mysql_query($sql);
+		}
+		public function TatDieuHoa()
+		{
+			$sql="Call TatDieuHoa()";
+			return mysql_query($sql);
+		}
 		public function LayTrangThai()
 		{
 			$sql="Call LayTrangThai()";
@@ -25,13 +39,22 @@
 		public function UpdateNhietDo($NhietDo)
 		{
 			$sql="Call UpdateNhietDo(".$NhietDo.")";
-			echo $sql;
 			mysql_query($sql);
+		}
+		public function UpdateStt($MaStt)
+		{
+			$sql="Call UpdateStt(".$MaStt.")";
+			return mysql_query($sql);
 		}
 		public function DangNhap($TenDangNhap,$MatKhau)
 		{
-			$sql=@"Call DangNhap(\"".$TenDangNhap."\",\"".$MatKhau."\")";
+			$sql="Call DangNhap(\"".$TenDangNhap."\",\"".$MatKhau."\")";
 			return mysql_query($sql);
+		}
+		public function KiemTraCoNguoi()
+		{
+			$sql="select * from trangthai";
+			return mysql_query($sql);	
 		}
 	}
 ?>

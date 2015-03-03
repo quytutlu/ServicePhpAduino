@@ -34,6 +34,32 @@
 				echo $KetQua;
 			}
 			break;
+		case "batdieuhoa":
+			$result=$XuLyNV->BatDieuHoa();
+			if($result==1)
+			{
+				$KetQua=json_encode(array('success'=>true));
+				echo $KetQua;
+			}
+			else
+			{
+				$KetQua=json_encode(array('success'=>false));
+				echo $KetQua;
+			}
+			break;
+		case "tatdieuhoa":
+			$result=$XuLyNV->TatDieuHoa();
+			if($result==1)
+			{
+				$KetQua=json_encode(array('success'=>true));
+				echo $KetQua;
+			}
+			else
+			{
+				$KetQua=json_encode(array('success'=>false));
+				echo $KetQua;
+			}
+			break;
 		case "laytrangthai":
 			if(isset($_GET["arduino"]))
 			{
@@ -46,6 +72,19 @@
 			$Len=count($ListTrangThai);
 			$KetQua=json_encode(array('list'=>$ListTrangThai));
 			echo $KetQua;
+			break;
+		case "capnhattrangthai":
+			$result=$XuLyNV->UpdateStt($_GET["mastt"]);
+			if($result==1)
+			{
+				$KetQua=json_encode(array('success'=>true));
+				echo $KetQua;
+			}
+			else
+			{
+				$KetQua=json_encode(array('success'=>false));
+				echo $KetQua;
+			}
 			break;
 		case "dangnhap":
 			$TenDangNhap;
