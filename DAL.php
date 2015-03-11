@@ -56,5 +56,10 @@
 			$sql="select * from trangthai";
 			return mysql_query($sql);	
 		}
+		public function LayEmail()
+		{
+			$sql="Call LayEmail()";
+			return mysql_query($sql);			
+		}
 	}
 ?>
