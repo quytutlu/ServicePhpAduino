@@ -67,6 +67,17 @@
 				{
 					$XuLyNV->UpdateNhietDo($_GET["nhietdo"]);
 				}
+				if(isset($_GET["congtac"]))
+				{
+					if($_GET["congtac"]==1)
+					{
+						$XuLyNV->BatBongDen();	
+					}
+					else
+					{
+						$XuLyNV->TatBongDen();
+					}					
+				}
 			}
 			$ListTrangThai=$XuLyNV->LayTrangThai();
 			$Len=count($ListTrangThai);

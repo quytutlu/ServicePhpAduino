@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2015 at 05:21 PM
+-- Generation Time: Mar 11, 2015 at 10:51 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `arduinov2`
+-- Database: `arduino`
 --
 
 DELIMITER $$
@@ -34,7 +34,7 @@ begin
 	update ThietBi set TrangThai='1' where TenThietBi='DieuHoa';
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DangNhap`(IN `TenDangNhap` VARCHAR(50), IN `MatKhau` VARCHAR(30))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DangNhap`(in TenDangNhap varchar(30),MatKhau varchar(30))
 begin
 	select *
     from thongtinnguoidung
@@ -104,18 +104,19 @@ INSERT INTO `thietbi` (`id`, `TenThietBi`, `TrangThai`) VALUES
 
 CREATE TABLE IF NOT EXISTS `thongtinnguoidung` (
 `id` int(11) NOT NULL,
-  `TenDangNhap` varchar(50) NOT NULL,
+  `TenDangNhap` varchar(30) NOT NULL,
   `MatKhau` varchar(30) NOT NULL,
-  `SoDienThoai` varchar(12) NOT NULL,
+  `SDT` varchar(12) NOT NULL,
   `Email` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thongtinnguoidung`
 --
 
-INSERT INTO `thongtinnguoidung` (`id`, `TenDangNhap`, `MatKhau`, `SoDienThoai`, `Email`) VALUES
-(1, 'admin', '123456a@', '01688558810', 'quytutlu@gmail.com');
+INSERT INTO `thongtinnguoidung` (`id`, `TenDangNhap`, `MatKhau`, `SDT`, `Email`) VALUES
+(1, 'adminstrator', '123456a@', '01688558810', 'quytutlu@gmail.com'),
+(2, 'quytutlu', '60648994t', '01688558810', 'quytutlu@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ INSERT INTO `thongtinnguoidung` (`id`, `TenDangNhap`, `MatKhau`, `SoDienThoai`, 
 CREATE TABLE IF NOT EXISTS `trangthai` (
 `id` int(11) NOT NULL,
   `MaStt` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `trangthai`
@@ -170,12 +171,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `thongtinnguoidung`
 --
 ALTER TABLE `thongtinnguoidung`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `trangthai`
 --
 ALTER TABLE `trangthai`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

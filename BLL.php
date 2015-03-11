@@ -40,6 +40,12 @@
 		private function GuiEmail()
 		{
 			//echo "Da gui email";
+			$to ="quytutlu@gmail.com";
+			$subject="test send email";
+			$message="test mail from php";
+			$headers="From:quytutlu@gmail.com\r\nReply-To:quytutlu@gmail.com";
+			$mail_sent=mail($to, $subject, $message,$headers);
+			echo $mail_sent?"da gui thanh cong":"gui that bai";
 		}
 		public function UpdateNhietDo($NhietDo)
 		{
