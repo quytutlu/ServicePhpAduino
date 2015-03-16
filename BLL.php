@@ -41,16 +41,17 @@
 		}
 		public function GuiEmail($NhietDo)
 		{
+			echo "gui mail";
 			$email=$this->LayEmail();
 			$mail = new PHPMailer();
 			// Thiết lập SMTP
 			$mail->IsSMTP();                // thiết lập 1 kết nối đến SMTP
 			$mail->IsHTML(true);
-			//$mail->SMTPDebug  = 2;        // in ra màn hình thông tin debug
+			//$mail->SMTPDebug  = 4;        // in ra màn hình thông tin debug
 			$mail->SMTPAuth = true;        	// sử dụng tài khoản email để gửi
-			$mail->SMTPSecure = "tls";      // sử dụng kết nối tls
-			$mail->Host = "smtp.gmail.com";
-			$mail->Port = 25;
+			$mail->SMTPSecure = "ssl";      // sử dụng kết nối tls
+			$mail->Host = "ssl://smtp.gmail.com";
+			$mail->Port = 465;
 			$mail->Encoding = '7bit';       // SMS uses 7-bit encoding
 
 			$mail->Username   = "nhathongminharduino@gmail.com"; // Tài khoản email gửi
