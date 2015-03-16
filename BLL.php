@@ -9,31 +9,27 @@
 		{
 			$this->ThaoTacCSDL=new TruyXuatDuLieu();
 		}
-		public function BatBongDen()
+		public function BatThietBi($TenThietBi)
 		{
-			return $this->ThaoTacCSDL->BatBongDen();
+			return $this->ThaoTacCSDL->BatThietBi($TenThietBi);
 		}
-		public function TatBongDen()
+		public function TatThietBi($TenThietBi)
 		{
-			return $this->ThaoTacCSDL->TatBongDen();
+			return $this->ThaoTacCSDL->TatThietBi($TenThietBi);
 		}
-		public function BatDieuHoa()
+		public function RaNgoai()
 		{
-			return $this->ThaoTacCSDL->BatDieuHoa();
+			return $this->ThaoTacCSDL->RaNgoai();
 		}
-		public function TatDieuHoa()
+		public function LayTrangThai($cmd)
 		{
-			return $this->ThaoTacCSDL->TatDieuHoa();
-		}
-		public function LayTrangThai()
-		{
-			$kq=$this->ThaoTacCSDL->LayTrangThai();
+			$kq=$this->ThaoTacCSDL->LayTrangThai($cmd);
 			$ListTrangThai;
 			while($row=mysql_fetch_array($kq))
 			{
 				$temp=new TrangThaiThietBi();
 				$temp->TenThietBi=$row[1];
-				$temp->TrangThai=$row[2];
+				$temp->TrangThai=$row[3].$row[2];
 				$ListTrangThai[]=$temp;
 			}
 			return $ListTrangThai;
@@ -72,7 +68,6 @@
 		}
 		public function UpdateNhietDo($NhietDo)
 		{
-			$this->ThaoTacCSDL->UpdateNhietDo($NhietDo);
 			if($NhietDo>40)
 			{
 				$kq=$this->ThaoTacCSDL->KiemTraCoNguoi();
@@ -83,18 +78,19 @@
 				}
 				else
 				{
-					echo "bao dong chay";
+					//echo "bao dong chay";
 				}
 			}
-			if($NhietDo>35&&$NhietDo<40)
+			if($NhietDo>=35&&$NhietDo<=40)
 			{
 				$kq=$this->ThaoTacCSDL->KiemTraCoNguoi();
 				$row=mysql_fetch_array($kq);
 				if($row[1]==1)
 				{
-					$this->BatDieuHoa();
+					$this->BatThietBi("quatdien1");
 				}
 			}
+			return $this->ThaoTacCSDL->UpdateNhietDo($NhietDo);
 		}
 		public function UpdateStt($MaStt)
 		{

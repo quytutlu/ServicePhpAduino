@@ -7,39 +7,42 @@
 			$conn=mysql_connect("localhost","root");
 			mysql_select_db("Arduino",$conn);
 		}
-		public function CloseBD()
+		public function CloseDB()
 		{
 			mysql_close();
 		}
-		public function BatBongDen()
+		public function BatThietBi($TenThietBi)
 		{
-			$sql="Call BatBongDen()";
+			$sql="Call BatThietBi(\"".$TenThietBi."\")";
 			return mysql_query($sql);
 		}
-		public function TatBongDen()
+		public function TatThietBi($TenThietBi)
 		{
-			$sql="Call TatBongDen()";
+			$sql="Call TatThietBi(\"".$TenThietBi."\")";
 			return mysql_query($sql);
 		}
-		public function BatDieuHoa()
+		public function RaNgoai()
 		{
-			$sql="Call BatDieuHoa()";
+			$sql="Call RaNgoai()";
 			return mysql_query($sql);
 		}
-		public function TatDieuHoa()
+		public function LayTrangThai($cmd)
 		{
-			$sql="Call TatDieuHoa()";
-			return mysql_query($sql);
-		}
-		public function LayTrangThai()
-		{
-			$sql="Call LayTrangThai()";
+			$sql;
+			if($cmd=="arduino")
+			{
+				$sql="Call LayTrangThaiArduino()";
+			}
+			else
+			{
+				$sql="Call LayTrangThai()";				
+			}
 			return mysql_query($sql);
 		}
 		public function UpdateNhietDo($NhietDo)
 		{
 			$sql="Call UpdateNhietDo(".$NhietDo.")";
-			mysql_query($sql);
+			return mysql_query($sql);
 		}
 		public function UpdateStt($MaStt)
 		{
@@ -53,12 +56,12 @@
 		}
 		public function KiemTraCoNguoi()
 		{
-			$sql="select * from trangthai";
-			return mysql_query($sql);	
+			$sql="select TenThietBi,TrangThai from ThietBi where TenThietBi=\"CoNguoiONha\"";
+			return mysql_query($sql);
 		}
 		public function LayEmail()
 		{
-			$sql="Call LayEmail()";
+			$sql="select email from thongtinnguoidung";
 			return mysql_query($sql);			
 		}
 	}

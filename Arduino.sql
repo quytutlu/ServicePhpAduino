@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2015 at 10:51 AM
+-- Generation Time: Mar 16, 2015 at 10:06 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -24,14 +24,9 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `BatBongDen`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BatThietBi`(TenThietBi varchar(50))
 begin
-	update ThietBi set TrangThai='1' where TenThietBi='BongDen';
-end$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `BatDieuHoa`()
-begin
-	update ThietBi set TrangThai='1' where TenThietBi='DieuHoa';
+	update ThietBi set TrangThai="1" where ThietBi.TenThietBi=TenThietBi;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DangNhap`(in TenDangNhap varchar(30),MatKhau varchar(30))
@@ -43,8 +38,8 @@ end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `KiemTraCoNguoi`()
 begin
-	select *
-    from trangthai;
+	select TenThietBi,TrangThai
+    from ThietBi;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `LayTrangThai`()
@@ -53,14 +48,21 @@ begin
     from thietbi;
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `TatBongDen`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `LayTrangThaiArduino`()
 begin
-	update ThietBi set TrangThai='0' where TenThietBi='BongDen';
+	select *
+    from thietbi
+    where TenThietBi<>"NhietDo" and TenThietBi<>"CoNguoiONha";
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `TatDieuHoa`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RaNgoai`()
 begin
-	update ThietBi set TrangThai='0' where TenThietBi='DieuHoa';
+	update ThietBi set TrangThai="0" where TenThietBi<>"NhietDo";
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TatThietBi`(TenThietBi varchar(50))
+begin
+	update ThietBi set TrangThai="0" where ThietBi.TenThietBi=TenThietBi;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateNhietDo`(IN NhietDo varchar(10))
@@ -70,7 +72,7 @@ end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateStt`(IN `CodeStt` INT)
 begin
-	update trangthai set MaStt=CodeStt;
+	update ThietBi set TrangThai=CodeStt where TenThietBi="CoNguoiONha";
 end$$
 
 DELIMITER ;
@@ -84,17 +86,22 @@ DELIMITER ;
 CREATE TABLE IF NOT EXISTS `thietbi` (
 `id` int(11) NOT NULL,
   `TenThietBi` varchar(50) NOT NULL,
-  `TrangThai` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `TrangThai` varchar(10) NOT NULL,
+  `TenVietTat` varchar(5) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thietbi`
 --
 
-INSERT INTO `thietbi` (`id`, `TenThietBi`, `TrangThai`) VALUES
-(1, 'BongDen', '1'),
-(2, 'NhietDo', '45'),
-(4, 'DieuHoa', '1');
+INSERT INTO `thietbi` (`id`, `TenThietBi`, `TrangThai`, `TenVietTat`) VALUES
+(2, 'NhietDo', '55', 'nd'),
+(5, 'DenComPac', '0', 'dcp'),
+(6, 'DenTuypDai', '0', 'dtd'),
+(7, 'QuatDien1', '0', 'qd1'),
+(8, 'QuatDien2', '0', 'qd2'),
+(9, 'Tivi', '0', 'tv'),
+(10, 'CoNguoiONha', '0', '');
 
 -- --------------------------------------------------------
 
@@ -134,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `trangthai` (
 --
 
 INSERT INTO `trangthai` (`id`, `MaStt`) VALUES
-(1, 0);
+(1, 1);
 
 --
 -- Indexes for dumped tables
@@ -166,7 +173,7 @@ ALTER TABLE `trangthai`
 -- AUTO_INCREMENT for table `thietbi`
 --
 ALTER TABLE `thietbi`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `thongtinnguoidung`
 --
