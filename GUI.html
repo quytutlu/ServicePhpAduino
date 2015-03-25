@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="javaScript/jquery-2.1.3.js"></script>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<h1>Trạng thái hiện tại của các thiết bị</h1>
+	<table border="1" center style="text-align: center">
+		<tr>
+			<th>Tên thiết bị</th>
+			<th>Trạng thái hiện tại</th>
+			<th>Hành động</th>
+		</tr>
+		<tr>
+			<td>Đèn compact</td>
+			<td><p id="sttdcp"></p></td>
+			<td><input type="button" id="dencompac" onclick="UpdateStt(this.id)" value="--"/></td>
+		</tr>
+	 	<tr>
+			<td>Đèn tuýp dài</td>
+			<td><p id="sttdtd"></p></td>
+			<td><input type="button" id="dentuypdai" onclick="UpdateStt(this.id)" value="--"/></td>
+		</tr>
+		<tr>
+			<td>Quạt điện 1</td>
+			<td><p id="sttqd1"></p></td>
+			<td><input type="button" id="quatdien1" onclick="UpdateStt(this.id)" value="--"/></td>
+		</tr>
+		<tr>
+			<td>Quạt điện 2</td>
+			<td><p id="sttqd2"></p></td>
+			<td><input type="button" id="quatdien2" onclick="UpdateStt(this.id)" value="--"/></td>
+		</tr>
+		<tr>
+			<td>Tivi</td>
+			<td><p id="stttv"></p></td>
+			<td><input type="button" id="tivi" onclick="UpdateStt(this.id)" value="--"/></td>
+		</tr>
+	</table>
+	<script type="text/javascript" src="Web.js"></script>	
+</body>
+</html>
