@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="jquery.session.js"></script>
 	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
+	<link rel="icon" type="image/png" href="icon.png" sizes="196x196" />
 </head>
 <body>
 	<script type="text/javascript">
