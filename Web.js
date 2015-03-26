@@ -108,6 +108,9 @@ function UpdateStt (id) {
 				document.getElementById(id).setAttribute("class", "btn btn-primary");
 			}
 		}});
-	}
-	
+	}	
+}
+function DangXuat(){
+	sessionStorage.setItem("success", "false");
+	window.location.href = "login.php";
 }
