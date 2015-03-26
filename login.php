@@ -3,6 +3,8 @@
 	<title>Smart Home</title>
 	<script type='text/javascript' src='jquery-1.9.1.js'></script>
 	<script type="text/javascript" src="jquery.session.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<script type="text/javascript">
@@ -22,25 +24,25 @@
 		}});
 	}
 	</script>
-	<center>
-	<table>
-		<h1>Đăng nhập</h1>
-		<tr>
-			<td>Tên đăng nhập:</td>
-			<td><input type="text" id="user"/></td>
-		</tr>
-		<tr>
-			<td>Mật khẩu:</td>
-			<td><input type="password" id="pass"/></td>
-		</tr>
-		<tr>
-			<td>
-			</td>
-			<td>
-				<button id="login" onclick="DangNhap()">login</button>
-			</td>
-		</tr>
-	</table>
-	</center>
+	<form class="form-horizontal" style="width:900px; margin:auto;" >
+		<div class="form-group" style="margin-top:100px">
+		    <label for="inputEmail3" class="col-sm-2 control-label">Tên đăng nhập</label>
+		    <div class="col-sm-10">
+		      <input style="width:300px" type="text" class="form-control" id="user" placeholder="Username">
+		    </div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Mật khẩu</label>
+			<div class="col-sm-10">
+			    <input style="width:300px" type="password" class="form-control" id="pass" placeholder="Password">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+			    <input class="btn btn-default" type="button" value="Đăng nhập" onclick="DangNhap()">
+			</div>
+		</div>
+	</form>
 </body>
 </html>
+

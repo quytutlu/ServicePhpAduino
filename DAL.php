@@ -4,7 +4,7 @@
 		private $conn;
 		public function TruyXuatDuLieu()
 		{
-			$conn=mysql_connect("localhost","root");
+			$conn=mysql_connect("localhost","root","60648994t");
 			mysql_select_db("Arduino",$conn);
 		}
 		public function CloseDB()
